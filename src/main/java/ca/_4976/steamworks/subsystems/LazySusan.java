@@ -20,6 +20,11 @@ public class LazySusan extends AsynchronousRobot{
 
                 if(vision_state == 0) {
                     vision_state = 2;
+                    System.out.println("Seeing target");
+                }
+                if(vision_state == 2) {
+                    vision_state = 0;
+                    System.out.println("Not seeing target");
                 }
             }
         }, 10);
