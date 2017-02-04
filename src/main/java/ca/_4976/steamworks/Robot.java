@@ -31,14 +31,14 @@ public class Robot extends AsynchronousRobot {
 
     @Override public void robotInit() {
 
-        runNextLoop(this::getEncoderDistance, -1);
+       // runNextLoop(this::getEncoderDistance, -1);
     }
 
     @Override public void autonomousInit() { profile.run(); }
 
     @Override public void teleopInit() {
 
-        System.out.println("Operator Control Enabled");
+       // System.out.println("Operator Control Enabled");
     }
 
     @Override public void testInit() {

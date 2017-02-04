@@ -16,32 +16,33 @@ public class LazySusan extends AsynchronousRobot{
 
         module.driver.BACK.addListener(new ButtonListener() {
             @Override
-            public void pressed() {
+            public void falling() {
 
                 if(vision_state == 0) {
                     vision_state = 2;
                     System.out.println("Seeing target");
                 }
-                if(vision_state == 2) {
+                else if(vision_state == 2) {
                     vision_state = 0;
                     System.out.println("Not seeing target");
                 }
             }
-        }, 10);
+        });
 
         //call midura's code
+
         module.driver.A.addListener(new ButtonListener() {
-            @Override
-            public void pressed() {
+            @Override public void rising() {
+                if (vision_state == 0) {
 
-                if(vision_state == 0) {
-                    for(int i = 0; i < 2; i++) {    //buzz's remote 3 times
-                        module.driver.setRumble(1);
+                    module.runNextLoop(() -> module.driver.setRumble(1), 0);
 
-
-                    }
+                    module.runNextLoop(() -> module.driver.setRumble(0), 3000);
                 }
+
             }
-        },500);
+
+        });
     }
 }
+//give up
