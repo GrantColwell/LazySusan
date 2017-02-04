@@ -34,5 +34,5 @@ public class Button {
         else onTime = 0;
     }
 
-    public void addListener(ButtonListener listener, int i) { listeners.add(listener); }
+    public void addListener(ButtonListener listener) { listeners.add(listener); }
 }
