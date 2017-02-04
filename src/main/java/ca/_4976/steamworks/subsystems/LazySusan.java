@@ -10,15 +10,16 @@ import edu.wpi.first.wpilibj.*;
  */
 public class LazySusan extends AsynchronousRobot{
               //midura is a placeholder for midura's ready, searching or failed variable
+              int vision_state = 0;
     public LazySusan(Robot module){
-        final int[] vision_state = {0};
+
 
         module.driver.BACK.addListener(new ButtonListener() {
             @Override
             public void pressed() {
 
-                if(vision_state[0] == 0) {
-                    vision_state[0] = 2;
+                if(vision_state == 0) {
+                    vision_state = 2;
                 }
             }
         }, 10);
@@ -28,7 +29,7 @@ public class LazySusan extends AsynchronousRobot{
             @Override
             public void pressed() {
 
-                if(vision_state[0] == 0) {
+                if(vision_state == 0) {
                     for(int i = 0; i < 2; i++) {    //buzz's remote 3 times
                         module.driver.setRumble(1);
 
